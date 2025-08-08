@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Show List
+{% endblock %}
+
+{% block header %}
+    {{ title }}
+{% endblock %}
+
+{% block main %}
+<!--Make the check list based on the input of user-->
+<!--Will need to draw some information from DB to fill in all cell data-->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <form action="/save_list" method="post">
+                <input name="listname" type="hidden" value="{{ listname }}">
+                <table class="table align-middle table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Status</th>
+                        <th scope="col">Task</th>
+                        <th scope="col">Completion Date</th>
+                        <th scope="col">Completion Goal</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        {% for item in tasklist %}
+                            <tr>
+                                <td>  <!--Tracks the the completion STATUS-->
+                                    {%if item["status"] == 'on' %}
+                                        <input name="status-{{ item['row_id'] }}" type="checkbox" id="{{ item['row_id'] }}" checked>
+                                    {% else %}
+                                        <input name="status-{{ item['row_id'] }}" type="checkbox" id="{{ item['row_id'] }}">
+                                    {% endif %}
+                                </td>
+                                <td>{{ item["task"] }}</td>  <!--Name of task-->
+                                <td>  <!--Tracks completion DATE-->
+                                    {% if item["comp_date"] == None or item["comp_date"] == '' %}
+                                        <input name="comp_date-{{ item['row_id'] }}" type="date">
+                                    {% else %}
+                                        {{ item["comp_date"] }}
+                                        <input name="comp_date-{{ item['row_id'] }}" type="hidden" value="{{ item['comp_date'] }}">
+                                    {% endif %}
+                                </td>
+                                <td> <!--Tracks goal DATE-->
+                                    {% if item["goal_date"] == None or item["goal_date"] == '' %}
+                                        <input name="goal_date-{{ item['row_id'] }}" type="date">
+                                    {% else %}
+                                        {{ item["goal_date"] }}
+                                        <input name="goal_date-{{ item['row_id'] }}" type="hidden" value="{{ item['goal_date'] }}">
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
+                  <button type="submit" class="btn btn-success">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

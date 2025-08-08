@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block header %}
+    Error
+{% endblock %}
+
+{% block main %}
+<div class="container text-center">
+    <h1>Error Code: {{ code }}</h1>
+    <h2>{{ message }}</h2>
+    <div class="text-center cmh-80">
+        <img src="/static/loan-7AIDE8PrvA0-unsplash.jpg" class="rounded cmh-80">
+    </div>
+    Photo by <a href="https://unsplash.com/@l_oan?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Loan</a> on <a href="https://unsplash.com/photos/silver-tabby-kitten-on-floor-7AIDE8PrvA0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sign Up
+{% endblock %}
+
+{% block header %}
+    Sign Up
+{% endblock %}
+
+{% block main %}
+    <div class="container text-center">
+        <form action="/signup" method="post">
+            <div class="container mb-3 input-mw-300">
+                <label for="username">Username</label>
+                <input name="username" id="username" class="form-control" placeholder="Username" type="text" autocomplete="off" autofocus>
+            </div>
+            <div class="container mb-3 input-mw-300">
+                <label for="password">Password</label>
+                <input name="password" id="password" class="form-control" placeholder="Password" type="password">
+            </div>
+            <div class="container mb-3 input-mw-300">
+                <label for="password_confirmation">Confirm Password</label>
+                <input name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirm Password" type="password">
+            </div>
+            <div class="container mb-3">
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+            <div class="container mb-3">
+                <h5>Already have an account?</h5><a href="/login" class="btn btn-primary btn-sm">Log in instead!</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

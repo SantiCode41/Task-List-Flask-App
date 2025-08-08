@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete Account
+{% endblock %}
+
+{% block header %}
+    Delete Account
+{% endblock %}
+
+{% block main %}
+    <div class="container text-center">
+        <h3>Are you sure you would like to delete your account?</h3>
+        <h3>This step is NOT reversible</h3>
+        <p>To confirm account deletion please enter your password and click</p>
+        <p>"DELETE ACCOUNT"</p>
+        <form action="/delete_account" method="post">
+            <div class="container mb-3 input-mw-300">
+                <input name="password" class="form-control" type="password" autocomplete="off" placeholder="Password">
+            </div>
+            <div class="container mb-3 input-mw-300">
+                <input name="password_confirmation" class="form-control" type="password" autocomplete="off" placeholder="Re-enter Password">
+            </div>
+            <div class="container mb-3">
+                <button type="submit" class="btn btn-danger">DELETE ACCOUNT</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

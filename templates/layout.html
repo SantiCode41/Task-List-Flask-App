@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">  <!--Defines character set to be used-->
+        <meta name="viewport" content="initial-scale=1, width=device-width"> <!--Scales the page to the device view area-->
+
+        <!--Gets Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <title>Class List: {% block title %}{% endblock %}</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="/static/ui-checks.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Class List
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                {% if session["user_id"] %}
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active_page == 'Dashboard' else '' }}" aria-current="{{ 'page' if active_page == 'Dashboard' else '' }}" href="/">Dashboard</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active_page == 'My Account' else '' }}" aria-current="{{ 'page' if active_page == 'My Account' else '' }}" href="/myaccount">My Account</a>
+                      </li>
+                      <!-- <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active_page == 'User Guide' else '' }}" aria-current="{{ 'page' if active_page == 'User Guide' else '' }}" href="/userguide">User Guide</a>
+                      </li> -->
+                      <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active_page == 'Log Out' else '' }}" aria-current="{{ 'page' if active_page == 'Log Out' else '' }}" href="/logout">Log Out</a>
+                      </li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav">
+                      <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active_page == 'Log In' else '' }}" aria-current="{{ 'page' if active_page == 'Log In' else '' }}" href="/login">Log In</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active_page == 'Sign Up' else '' }}" aria-current="{{ 'page' if active_page == 'Sign Up' else '' }}" href="/signup">Sign Up</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link {{ 'active' if active_page == 'About' else '' }}" aria-current="{{ 'page' if active_page == 'About' else '' }}" href="/about">About</a>
+                      </li>
+                    </ul>
+                {% endif %}
+              </div>
+            </div>
+          </nav>
+
+
+            <header>
+                <h2 class="text-center">{% block header %}{% endblock %}</h2>
+            </header>
+
+
+          <main>
+            <div class="container-fluid">
+              {% block main %}{% endblock %}
+            </div>
+          </main>
+
+          <footer>
+              <div class="text-center fixed-bottom footer">
+                  <p><small>Web application developed by Santiago Marroquin to fulfill the requierments of the final project for CS50x</small></p>
+              </div>
+          </footer>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New List
+{% endblock %}
+
+{% block header %}
+    Make a new list!
+{% endblock %}
+
+{% block main %}
+  <!--Submit list of tasks to generate checklist-->
+  <div class="container text-center">
+    <form action="/new_list" method="post">
+      <div class="container mb-3 input-mw-300">
+        <input name="listname" placeholder="Enter name of list" autocomplete="off" autofocus type="text">
+      </div>
+      <div class="container mb-1 input-mw-300">
+        <textarea name="tasklist" placeholder="Seperate each task with a , (comma)" autocomplete="off" type="text"></textarea>
+      </div>
+      <p>Example: task 1, task 2, task 3</p>
+      <div class="container">
+        <button type="submit" class="btn btn-primary btn-lg custom-button">Generate Task List</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block header %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+<div class="container text-center">
+  <h2>Welcome</h2>
+  <h3>What would you like to do?</h3>
+  <a href="/new_list" class="btn btn-primary btn-lg custom-button">Make new list</a>
+  <a href="/view_lists" class="btn btn-primary btn-lg">View current lists</a>
+</div>
+
+{% endblock %}
